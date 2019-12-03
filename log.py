@@ -28,19 +28,19 @@ class Log_in:
         btn.grid(column=0, row=0)
         lb = Label(display, text='Log to Your Account', font=F_ont)
         lb.grid(column=1, row=1)
-        username = Label(display, text='Username',font=F_ont)
+        username = Label(display, text='Username', font=F_ont)
         username.grid(column=0, row=2)
         entry = Entry(display, font=("Helvetica", 18), textvariable=self.string, width=30, bd=8, insertwidth=4,
                       justify='left')
         entry.grid(column=0, row=3)
 
-        password = Label(display, text='password',font=F_ont)
+        password = Label(display, text='password', font=F_ont)
         password.grid(column=0, row=4)
-        entry1 = Entry(display, font=("Helvetica", 18),show='*', width=30, bd=8, insertwidth=4,
-                      justify='left')
+        entry1 = Entry(display, font=("Helvetica", 18), show='*', width=30, bd=8, insertwidth=4,
+                       justify='left')
         entry1.grid(column=0, row=5)
 
-        snbtn = Button(display, text='Sign In',width=30)
+        snbtn = Button(display, text='Sign In', width=30)
         snbtn.grid(column=1, row=8)
         fpass = Button(display, text='Forget Password')
         fpass.grid(column=1, row=9)
