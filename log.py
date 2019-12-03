@@ -19,9 +19,23 @@ class Log_in:
 
         btn = Label(display,bg='black',font=("Helvetica", 10),width=30)
         btn.grid(column=0, row=0)
-        lb = Label(display,text='Sign Up',font=("Helvetica", 18),underline=0)
+        lb = Label(display,text='Sign In',font=("Helvetica", 18),underline=0)
         lb.grid(column=2,row=1)
+        username = Label(display,text='Username')
+        username.grid(column=1,row=2)
+        entry = Entry(display,font=("Helvetica", 8))
+        entry.grid(column=1,row=3)
 
+
+        password = Label(display,text='password')
+        password.grid(column=1,row=4)
+        entry1 = Entry(display,font=("Helvetica", 8))
+        entry1.grid(column=1,row=5)
+
+        snbtn = Button(display,text='Sign In')
+        snbtn.grid(column=3,row=8)
+        fpass = Button(display,text='Forget Password')
+        fpass.grid(column=3,row=9)
 
         display.mainloop()
 
