@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.font import Font
+from PIL import Image, ImageTk
 import os
 from worng import *
 
@@ -10,7 +11,7 @@ def register():
     global F_ont
     global display2
     F_ont = Font(family='Times New Roman', size=17,
-        weight='bold', slant='italic', underline=1)
+                 weight='bold', slant='italic', underline=1)
     display2 = Toplevel(display)
     display2.title("Registatration")
     display2.config(bg='white')
@@ -25,14 +26,15 @@ def register():
 
     Label(display2, text="Please enter details below").pack()
     Label(display2, text="").pack()
-    username_lable = Label(display2, text="Username ",font=F_ont)
+    username_lable = Label(display2, text="Username ", font=F_ont)
     username_lable.pack()
-    username_entry = Entry(display2, textvariable=username,        width=15,bd=5,font=("Helvetica",18),justify='left')
+    username_entry = Entry(display2, textvariable=username,
+                           width=15, bd=5, font=("Helvetica", 18), justify='left')
     username_entry.pack()
-    password_lable = Label(display2, text="Password * ")
+    password_lable = Label(display2, text="Password ")
     password_lable.pack()
     password_entry = Entry(display2, textvariable=password, show='*',
-        width=15,bd=5,font=("Helvetica",18),justify='left')
+                           width=15, bd=5, font=("Helvetica", 18), justify='left')
     password_entry.pack()
     Label(display2, text="").pack()
     Button(display2, text="Register", width=10,
@@ -66,16 +68,19 @@ def login_verify():
     username_login_entry.delete(0, END)
     password_login_entry.delete(0, END)
 
-    list_of_files = os.listdir()
-    with open('userfile.txt', 'r') as f:
-        ss = f.read().splitlines()
-        if username1 in ss:
-            if password1 == ss[1]:
-                login_sucess()
+    try:
+
+        with open('userfile.txt', 'r') as f:
+            ss = f.read().splitlines()
+            if username1 in ss:
+                if password1 == ss[1]:
+                    login_sucess()
+                else:
+                    password_not_recognised()
             else:
-                password_not_recognised()
-        else:
-            user_not_found()
+                user_not_found()
+    except :
+        print('Type something')
 
 # Designing popup for login success
 
@@ -131,7 +136,13 @@ def main_account_screen():
     display = Tk()
     display.geometry("400x900")
     display.title("Account Login")
-    Label(text="Select Your Choice", bg="blue", width="300",
+    t_img = PhotoImage(file='L.png')
+    # t_img = t_img.zoom()
+    t_img = t_img.subsample(6)
+
+    Label(display, image=t_img).pack()
+
+    Label(text="Select Your Choice", width="300",
           height="2", font=("Calibri", 13)).pack()
     Label(text="").pack()
     Label(display, text="Please enter details below to login").pack()
